@@ -6,7 +6,7 @@ use Pharmace_Mangment;
 
 create table users(
 id int IDENTITY(1,1) primary key ,
-name varchar(255),
+name varchar(255) UNIQUE,
 password varchar(255),
 firstName varchar(255),
 lastName varchar(255)
