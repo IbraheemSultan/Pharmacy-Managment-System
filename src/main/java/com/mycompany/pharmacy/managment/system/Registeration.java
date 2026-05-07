@@ -146,8 +146,22 @@ public class Registeration extends javax.swing.JFrame {
         Connection con = null;
         Statement stmt = null;
         ResultSet result = null;
+
         try {
             con = DBConnection.getConnection();
+            stmt = con.createStatement();
+            
+            String checkQuery = "SELECT * FROM users WHERE name = ?";
+            PreparedStatement checkStmt = con.prepareStatement(checkQuery);
+            checkStmt.setString(1, username);
+
+            ResultSet rs = checkStmt.executeQuery();
+
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(this, "Username Already Exists");
+                return;
+            }
+            
             String query = " INSERT into users values('" + username + "','" + password + "','" + fname + "','" + lname + "')";
             PreparedStatement ps = con.prepareStatement(query);
             ps.executeUpdate();

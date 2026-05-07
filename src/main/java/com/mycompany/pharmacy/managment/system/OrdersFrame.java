@@ -111,11 +111,11 @@ public class OrdersFrame extends javax.swing.JFrame {
             }
         }
     }
-
+    
     public OrdersFrame() {
         initComponents();
         setLocation(900, 0);
-        setTitle("Orders Management");
+        setTitle("Sales Management");
         model = new DefaultTableModel(
                 new String[]{"Id", "Customer", "Date", "Status", "Product", "Quantity", "Price"}, 0
         );
